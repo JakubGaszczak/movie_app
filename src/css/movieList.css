@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ADB5BD;
+}
+
+body,
+button,
+input {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+}
+
+h1, h2, h3 {
+  color: #495057;
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.section {
+  padding: 1.5rem 1rem 2rem 5rem;
+}
+
+.movie__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 1.3rem 1rem 2rem 3rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .section {
+    padding: 0rem 1rem 2rem 1rem;
+  }
+}
+.movie__card {
+  position: relative;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+.movie__card:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.movie__card:hover .movie__img-overlay {
+  opacity: 1;
+}
+
+.movie__img {
+  width: 10rem;
+  height: 14rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.movie__img-overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  opacity: 0;
+  width: 100%;
+  bottom: 0;
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 1rem;
+}

@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+// Variables
+
+$body-color: #ADB5BD;
+$text-color: #6C757D;
+$title-color: #495057;
+$title-color-dark: #343A40;
+$body-font: "Poppins", sans-serif;
+
+$font-normal: 400;
+$font-medium: 500;
+$font-bold: 600;
+
+$big-font-size: 2rem;
+$normal-font-size: 1.3rem;
+$small-font-size: 1rem;
+$smaller-font-size: .8rem;
+$tiny-font-size: .625rem;
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.75rem;
+$h4-font-size: 1.5rem;
+
+
+// Base 
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}  
+
+body {
+    background-color: $body-color;
+}
+
+body,
+button,
+input {
+    font-family: $body-font;
+    font-size: $normal-font-size
+}
+
+h1, h2, h3 {
+    color: $title-color;
+    font-weight: $font-bold;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.section {
+    padding: 1.5rem 1rem 2rem 5rem;
+}
+
+.movie__row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    
+    gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 1.3rem 1rem 2rem 3rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .section {
+        padding: 0rem 1rem 1.5rem 1rem;
+    }
+}
+
+
+
+
+

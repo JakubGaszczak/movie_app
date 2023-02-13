@@ -1,0 +1,38 @@
+@import "../../App.scss";
+
+.movie__card {
+    position: relative;
+    transition: transform .2s;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+
+        .movie__img-overlay {
+            opacity: 1;
+        }
+    }
+}
+
+.movie__img {
+    width: 10rem;
+    height: 14rem;
+
+    object-fit: cover;
+}
+
+.movie__img-overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, .8);
+    transition: .5s ease;
+    opacity: 0;
+    
+    width: 100%;
+    bottom: 0;
+    padding: 1.2rem;
+    
+    text-align: center;
+    font-size: $small-font-size;
+}
+
+
