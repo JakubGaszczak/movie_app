@@ -33,23 +33,43 @@ input {
   outline: none;
 }
 
+span {
+  font-size: 0.8rem;
+  color: white;
+  padding: 0 0.4rem;
+}
+
+.fa-solid {
+  color: red;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
 
 .section {
-  padding: 1.5rem 1rem 2rem 5rem;
+  padding: 1.5rem 1rem 2rem 4rem;
 }
 
-.movie__row {
+.movie__all-title,
+.movie__favourite-title {
+  padding-left: 1rem;
+}
+
+.movie__all-row,
+.movie__favourite-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   overflow-x: scroll;
   white-space: nowrap;
   scroll-behavior: smooth;
+  padding: 1rem;
   gap: 1rem;
 }
 
@@ -60,7 +80,7 @@ input {
 }
 @media screen and (max-width: 576px) {
   .section {
-    padding: 0rem 1rem 2rem 1rem;
+    padding: 0rem 1rem 1.5rem 1rem;
   }
 }
 .movie__card {
@@ -81,7 +101,7 @@ input {
 
 .movie__img {
   width: 10rem;
-  height: 14rem;
+  height: 15rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -93,8 +113,8 @@ input {
   transition: 0.5s ease;
   opacity: 0;
   width: 100%;
-  bottom: 0;
-  padding: 1.2rem;
+  bottom: 0.5rem;
+  padding: 0.5rem 0;
   text-align: center;
   font-size: 1rem;
 }

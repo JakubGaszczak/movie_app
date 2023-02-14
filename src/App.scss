@@ -58,21 +58,40 @@ input {
     outline: none;
 }
 
+span {
+    font-size: $smaller-font-size;
+
+    color: white;
+    padding: 0 .4rem;
+}
+
+.fa-solid {
+    color: red;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
 
 .section {
-    padding: 1.5rem 1rem 2rem 5rem;
+    padding: 1.5rem 1rem 2rem 4rem;
 }
 
-.movie__row {
+.movie__all-title,
+.movie__favourite-title {
+    padding-left: 1rem;
+}
+
+.movie__all-row,
+.movie__favourite-row {
     display: flex;
+    align-items: center;
     flex-wrap: nowrap;
     overflow-x: scroll;
     white-space: nowrap;
     scroll-behavior: smooth;
     
+    padding: 1rem;
     gap: 1rem;
 }
 

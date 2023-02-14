@@ -3,11 +3,13 @@ import React, {useState, useEffect} from "react";
 import MovieList from "./components/movieList/MovieList";
 import Header from "./components/header/Header";
 import AddFavourite from "./components/movieList/AddFavourite";
+import RemoveFavourite from "./components/movieList/RemoveFavourite";
 
 function App() {
 
   const [movies, setMovies] = useState([])
-  const [searchValue, setSearchValue] = useState("")
+  const [searchValue, setSearchValue] = useState("all")
+  const [favourites, setFavourites] = useState([])
 
   const getMovieRequest = async (searchValue) => {
     
@@ -26,15 +28,40 @@ function App() {
     getMovieRequest(searchValue)
   }, [searchValue])
 
-  const scrollMovies = () => {
+  useEffect(() => {
+    const movieFavourites = JSON.parse(localStorage.getItem("react-movie-app-favourites"))
 
-    const element = document.querySelector("#movie__row");
+    if (movieFavourites !== null) {
+      setFavourites(movieFavourites)
+    }
+  }, [])
 
-    if (element != null) {
-      element.addEventListener('wheel', (event) => {
+
+  const saveToLocalStorage = items => {
+    localStorage.setItem("react-movie-app-favourites", JSON.stringify(items))
+  }
+
+  const addFavouriteMovie = movie => {
+    const newFavouriteList = [...favourites, movie]
+    setFavourites(newFavouriteList)
+
+    saveToLocalStorage(newFavouriteList)
+  }
+
+  const removeFavouriteMovie = movie => {
+    const newFavouriteList = favourites.filter(favourite => favourite.imdbID !== movie.imdbID)
+
+    setFavourites(newFavouriteList)
+    saveToLocalStorage(newFavouriteList)
+  }
+
+  const scrollMovies = row => {
+
+    if (row != null) {
+      row.addEventListener('wheel', (event) => {
         event.preventDefault();
   
-        element.scrollBy({
+        row.scrollBy({
           left: event.deltaY < 0 ? -3000 : 3000,
           
         });
@@ -48,14 +75,29 @@ function App() {
       <Header searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <div className="movie__section section">
-        <div className="movie_all">
-          <h3 className="">Movies</h3>
-          <div onWheel={scrollMovies()} id="movie__row" className="movie__row">
-            <MovieList movies={movies} />
+        <div className="movie__all">
+          <h3 className="movie__all-title">Movies</h3>
+          <div onWheel={() => {
+            const row = document.querySelector(".movie__all-row ")
+            scrollMovies(row)
+          }} className="movie__all-row row">
+            <MovieList 
+              movies={movies} 
+              handleFavouritesClick={addFavouriteMovie} 
+              favouriteComponent={AddFavourite} />
           </div>
         </div>
-        <div className="movie__favourite row">
-          <AddFavourite />
+        <div className="movie__favourite">
+          <h3 className="movie__favourite-title">Favourites</h3>
+          <div onWheel={() => {
+            const row = document.querySelector(".movie__favourite-row")
+            scrollMovies(row)
+          }} className="movie__favourite-row row">
+            <MovieList 
+              movies={favourites} 
+              handleFavouritesClick={removeFavouriteMovie} 
+              favouriteComponent={RemoveFavourite} />
+          </div>
         </div>
       </div>
     </div>

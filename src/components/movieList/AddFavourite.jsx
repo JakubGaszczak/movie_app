@@ -2,10 +2,10 @@ import React from "react";
 
 function AddFavourite() {
   return (
-    <>
+    <div className="addFavourite">
       <span>Add to Fav</span>
-      <i class="fa-solid fa-heart"></i>
-    </>
+      <i className="fa-solid fa-heart"></i>
+    </div>
   )
 }
 
